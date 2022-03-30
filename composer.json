@@ -1,5 +1,5 @@
 {
-    "name": "hobbii/cognito-service",
+    "name": "hobbii/cognito-client",
     "description": "A PHP Library for interacting with AWS Cognito",
     "type": "library",
     "require": {
