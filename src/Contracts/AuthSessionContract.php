@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hobbii\CognitoService\Contracts;
+namespace Hobbii\CognitoClient\Contracts;
 
 interface AuthSessionContract
 {

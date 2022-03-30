@@ -4,14 +4,14 @@ namespace Tests;
 
 use Aws\CognitoIdentityProvider\Exception\CognitoIdentityProviderException;
 use Aws\Command;
-use Hobbii\CognitoService\CognitoClient;
-use Hobbii\CognitoService\Results\AuthSessionResult;
-use Hobbii\CognitoService\Results\BaseResult;
-use Hobbii\CognitoService\Results\ChangePasswordResult;
-use Hobbii\CognitoService\Results\CodeDeliveryResult;
-use Hobbii\CognitoService\Results\ForgotPasswordResult;
-use Hobbii\CognitoService\Results\GetUserResult;
-use Hobbii\CognitoService\Results\RegisterResult;
+use Hobbii\CognitoClient\CognitoClient;
+use Hobbii\CognitoClient\Results\AuthSessionResult;
+use Hobbii\CognitoClient\Results\BaseResult;
+use Hobbii\CognitoClient\Results\ChangePasswordResult;
+use Hobbii\CognitoClient\Results\CodeDeliveryResult;
+use Hobbii\CognitoClient\Results\ForgotPasswordResult;
+use Hobbii\CognitoClient\Results\GetUserResult;
+use Hobbii\CognitoClient\Results\RegisterResult;
 
 class CognitoClientTest extends TestCase
 {

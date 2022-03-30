@@ -11,8 +11,9 @@ composer require hobbii/cognito-client
 
 ## Usage
 Instantiate the client:
+
 ```php
-use Hobbii\CognitoService\CognitoClient
+use Hobbii\CognitoClient\CognitoClient
 
 $client = CognitoClient::init(
     'AKIAIOSFODNN7EXAMPLE', // AWS Access Key ID

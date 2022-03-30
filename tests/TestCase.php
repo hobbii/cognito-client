@@ -7,7 +7,7 @@ use Aws\Result;
 use Faker\Factory;
 use Faker\Generator;
 use Firebase\JWT\JWT;
-use Hobbii\CognitoService\CognitoClient;
+use Hobbii\CognitoClient\CognitoClient;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
 class TestCase extends PHPUnitTestCase

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hobbii\CognitoService\Results;
+namespace Hobbii\CognitoClient\Results;
 
 use Aws\Result;
 

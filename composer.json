@@ -16,7 +16,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Hobbii\\CognitoService\\": "src/"
+            "Hobbii\\CognitoClient\\": "src/"
         }
     },
     "autoload-dev": {

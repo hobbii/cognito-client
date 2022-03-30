@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Hobbii\CognitoService;
+namespace Hobbii\CognitoClient;
 
 use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
 use Aws\CognitoIdentityProvider\Exception\CognitoIdentityProviderException;
 use Aws\Credentials\Credentials;
-use Hobbii\CognitoService\Contracts\AuthSessionContract;
-use Hobbii\CognitoService\Results\AuthSessionResult;
-use Hobbii\CognitoService\Results\BaseResult;
-use Hobbii\CognitoService\Results\ChangePasswordResult;
-use Hobbii\CognitoService\Results\CodeDeliveryResult;
-use Hobbii\CognitoService\Results\ForgotPasswordResult;
-use Hobbii\CognitoService\Results\GetUserResult;
-use Hobbii\CognitoService\Results\RegisterResult;
+use Hobbii\CognitoClient\Contracts\AuthSessionContract;
+use Hobbii\CognitoClient\Results\AuthSessionResult;
+use Hobbii\CognitoClient\Results\BaseResult;
+use Hobbii\CognitoClient\Results\ChangePasswordResult;
+use Hobbii\CognitoClient\Results\CodeDeliveryResult;
+use Hobbii\CognitoClient\Results\ForgotPasswordResult;
+use Hobbii\CognitoClient\Results\GetUserResult;
+use Hobbii\CognitoClient\Results\RegisterResult;
 
 class CognitoClient
 {

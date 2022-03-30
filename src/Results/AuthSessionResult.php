@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Hobbii\CognitoService\Results;
+namespace Hobbii\CognitoClient\Results;
 
-use Hobbii\CognitoService\Contracts\AuthSessionContract;
+use Hobbii\CognitoClient\Contracts\AuthSessionContract;
 
 class AuthSessionResult extends BaseResult implements AuthSessionContract
 {

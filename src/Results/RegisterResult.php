@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Hobbii\CognitoService\Results;
+namespace Hobbii\CognitoClient\Results;
 
 class RegisterResult extends BaseResult
 {
