@@ -4,12 +4,12 @@
     "type": "library",
     "require": {
         "php": "^7.1|^7.4|^8.0",
-        "aws/aws-sdk-php": "^3.216",
-        "firebase/php-jwt": "^6.1"
+        "aws/aws-sdk-php": "^3.0",
+        "firebase/php-jwt": "^5.0|^6.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5|^8.5|^9.5",
-        "phpstan/phpstan": "^1.4",
+        "phpstan/phpstan": "^1.0",
         "mockery/mockery": "^1.3",
         "fakerphp/faker": "^1.19"
     },
