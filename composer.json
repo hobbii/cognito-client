@@ -1,0 +1,30 @@
+{
+    "name": "hobbii/cognito-service",
+    "description": "A PHP Library for interacting with AWS Cognito",
+    "type": "library",
+    "require": {
+        "php": "^7.1|^7.4|^8.0",
+        "aws/aws-sdk-php": "^3.216",
+        "firebase/php-jwt": "^6.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^1.5",
+        "mockery/mockery": "^1.5",
+        "fakerphp/faker": "^1.19"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hobbii\\CognitoService\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+      "stan": "@php vendor/bin/phpstan analyse"
+    }
+}
