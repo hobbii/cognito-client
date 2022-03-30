@@ -1,4 +1,7 @@
 # Cognito Service
+[![codecov](https://codecov.io/gh/hobbii/cognito-client/branch/main/graph/badge.svg?token=6PFWRSU1CN)](https://codecov.io/gh/hobbii/cognito-client)
+![CI Workflow](https://github.com/hobbii/cognito-client/actions/workflows/ci.yml/badge.svg?branch=main)
+
 A PHP Library client for interacting with AWS Cognito.
 
 ## Installation

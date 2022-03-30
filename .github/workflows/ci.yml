@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: php-cs-fixer, phpstan, composer:v2
+
+      - name: Run PHP CS Fixer
+        run: php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes --dry-run --diff
+
+      - name: Install dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --prefer-dist
+
+      - name: Run PHPStan
+        run: phpstan analyse
+
+  tests:
+    needs: analysis
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ['7.1', '7.2', '7.3', '7.4', '8.0', '8.1']
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: composer:v2
+          coverage: pcov
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-suggest --prefer-dist
+
+      - name: Execute tests via PHPUnit
+        if: ${{ matrix.php-version != '8.1' }}
+        run: vendor/bin/phpunit -d memory_limit=512M
+
+      - name: Execute tests via PHPUnit with coverage
+        if: ${{ matrix.php-version == '8.1' }}
+        run: vendor/bin/phpunit -d memory_limit=512M --coverage-clover clover.xml
+
+      - name: Upload Coverage Report to Codecov.io
+        if: ${{ matrix.php-version == '8.1' }}
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        shell: bash
+        run: bash <(curl -s https://codecov.io/bash) -t ${CODECOV_TOKEN} -f ${GITHUB_WORKSPACE}/clover.xml -C ${GITHUB_SHA}
+
+
+
