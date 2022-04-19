@@ -1,8 +1,11 @@
-# Cognito Service
+# Cognito Client
 [![codecov](https://codecov.io/gh/hobbii/cognito-client/branch/main/graph/badge.svg?token=6PFWRSU1CN)](https://codecov.io/gh/hobbii/cognito-client)
+[![Total Downloads](https://img.shields.io/packagist/dt/hobbii/cognito-client)](https://packagist.org/packages/hobbii/cognito-client)
+[![Latest Version](https://img.shields.io/packagist/v/hobbii/cognito-client)](https://packagist.org/packages/hobbii/cognito-client)
 ![CI Workflow](https://github.com/hobbii/cognito-client/actions/workflows/ci.yml/badge.svg?branch=main)
 
-A PHP Library client for interacting with AWS Cognito.
+
+A public composer package for interacting with AWS Cognito.
 
 ## Installation
 ```shell
