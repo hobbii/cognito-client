@@ -16,8 +16,8 @@ Instantiate the client:
 use Hobbii\CognitoClient\CognitoClient
 
 $client = CognitoClient::init(
-    'AKIAIOSFODNN7EXAMPLE', // AWS Access Key ID
-    'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY', // AWS Access Key Secret
+    'EXAMPLEAKIAIOSFODNN7', // AWS Access Key ID
+    'EXAMPLEKEYemi/K7MDENG/bPxRfiCYwJalrXUtnF', // AWS Access Key Secret
     'us-west-1', // AWS Region
     '12a34bcde5fgh7ij8kl90mn12o', // Cognito App Client ID
     '12abc3defghi56789jklmnopqrstu012vwxyzabcd34efg56hi7', // Cognito App Client Secret
