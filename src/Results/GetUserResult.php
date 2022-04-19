@@ -39,14 +39,14 @@ class GetUserResult extends BaseResult
         return $this->getAttribute('family_name');
     }
 
-    public function getOpenCartId(): ?string
-    {
-        return $this->getAttribute('custom:oc_customer_id');
-    }
-
     public function getLocale(): ?string
     {
         return $this->getAttribute('locale');
+    }
+
+    public function getCustomAttribute(string $attribute): ?string
+    {
+        return $this->getAttribute("custom:$attribute");
     }
 
     protected function getAttribute(string $attributeName): ?string

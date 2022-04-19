@@ -327,7 +327,7 @@ class CognitoClientTest extends TestCase
         $phone = $this->faker->phoneNumber();
         $phoneVerified = $this->faker->boolean();
         $locale = $this->faker->locale();
-        $openCartId = $this->faker->randomNumber();
+        $customAttribute = $this->faker->randomNumber();
 
         $providerClient = $this->providerClient('adminGetUser', [
             'Username' => $username,
@@ -364,8 +364,8 @@ class CognitoClientTest extends TestCase
                     'Value' => $locale,
                 ],
                 [
-                    'Name' => 'custom:oc_customer_id',
-                    'Value' => $openCartId,
+                    'Name' => 'custom:my_custom_attribute',
+                    'Value' => $customAttribute,
                 ],
             ]
         ]));
@@ -382,7 +382,7 @@ class CognitoClientTest extends TestCase
         $this->assertEquals($phone, $result->getPhoneNumber());
         $this->assertEquals($phoneVerified, $result->getPhoneNumberVerified());
         $this->assertEquals($locale, $result->getLocale());
-        $this->assertEquals($openCartId, $result->getOpenCartId());
+        $this->assertEquals($customAttribute, $result->getCustomAttribute('my_custom_attribute'));
     }
 
     public function testGetUserExceptionReturnsNull(): void
@@ -409,7 +409,7 @@ class CognitoClientTest extends TestCase
         $phone = $this->faker->phoneNumber();
         $phoneVerified = $this->faker->boolean();
         $locale = $this->faker->locale();
-        $openCartId = $this->faker->randomNumber();
+        $customAttribute = $this->faker->randomNumber();
 
         $providerClient = $this->providerClient('getUser', [
             'AccessToken' => $accessToken,
@@ -445,8 +445,8 @@ class CognitoClientTest extends TestCase
                     'Value' => $locale,
                 ],
                 [
-                    'Name' => 'custom:oc_customer_id',
-                    'Value' => $openCartId,
+                    'Name' => 'custom:my_custom_attribute',
+                    'Value' => $customAttribute,
                 ],
             ]
         ]));
@@ -463,7 +463,7 @@ class CognitoClientTest extends TestCase
         $this->assertEquals($phone, $result->getPhoneNumber());
         $this->assertEquals($phoneVerified, $result->getPhoneNumberVerified());
         $this->assertEquals($locale, $result->getLocale());
-        $this->assertEquals($openCartId, $result->getOpenCartId());
+        $this->assertEquals($customAttribute, $result->getCustomAttribute('my_custom_attribute'));
     }
 
     public function testGetUserByAccessTokenExceptionReturnsNull(): void
