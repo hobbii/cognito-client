@@ -16,16 +16,16 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.1'
-          tools: php-cs-fixer, phpstan, composer:v2
-
-      - name: Run PHP CS Fixer
-        run: php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes --dry-run --diff
+          tools: composer:v2
 
       - name: Install dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --prefer-dist
 
+      - name: Run PHP CS Fixer
+        run: vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky=yes --dry-run --diff
+
       - name: Run PHPStan
-        run: phpstan analyse
+        run: vendor/bin/phpstan analyse
 
   tests:
     needs: analysis
@@ -52,14 +52,12 @@ jobs:
 
       - name: Execute tests via PHPUnit with coverage
         if: ${{ matrix.php-version == '8.1' }}
-        run: vendor/bin/phpunit -d memory_limit=512M --coverage-clover clover.xml
+        run: vendor/bin/phpunit -d memory_limit=512M --coverage-clover build/logs/clover.xml
 
-      - name: Upload Coverage Report to Codecov.io
+      - name: Upload coverage results to Coveralls
         if: ${{ matrix.php-version == '8.1' }}
         env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        shell: bash
-        run: bash <(curl -s https://codecov.io/bash) -t ${CODECOV_TOKEN} -f ${GITHUB_WORKSPACE}/clover.xml -C ${GITHUB_SHA}
-
-
-
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          composer global require php-coveralls/php-coveralls
+          php-coveralls --coverage_clover=build/logs/clover.xml -v
