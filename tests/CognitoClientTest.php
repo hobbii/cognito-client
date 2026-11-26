@@ -176,7 +176,7 @@ class CognitoClientTest extends TestCase
 
         $providerClient = $this->providerClient('adminUpdateUserAttributes', [
             'UserPoolId' => $this->poolId(),
-            'Username'=> $username,
+            'Username' => $username,
             'UserAttributes' => [
                 [
                     'Name' => 'email',

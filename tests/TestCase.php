@@ -20,27 +20,40 @@ class TestCase extends PHPUnitTestCase
     private $region;
 
     /**
-     * This is a private key found in example with RSA256 (openssl)
-     * @see https://firebaseopensource.com/projects/firebase/php-jwt/
+     * Throwaway 2048-bit RSA key used only to sign fake tokens in tests
+     * (firebase/php-jwt v7 rejects RSA keys shorter than 2048 bits).
      *
      * @var string
      */
     private $privateKey = <<<EOD
------BEGIN RSA PRIVATE KEY-----
-MIICXAIBAAKBgQC8kGa1pSjbSYZVebtTRBLxBz5H4i2p/llLCrEeQhta5kaQu/Rn
-vuER4W8oDH3+3iuIYW4VQAzyqFpwuzjkDI+17t5t0tyazyZ8JXw+KgXTxldMPEL9
-5+qVhgXvwtihXC1c5oGbRlEDvDF6Sa53rcFVsYJ4ehde/zUxo6UvS7UrBQIDAQAB
-AoGAb/MXV46XxCFRxNuB8LyAtmLDgi/xRnTAlMHjSACddwkyKem8//8eZtw9fzxz
-bWZ/1/doQOuHBGYZU8aDzzj59FZ78dyzNFoF91hbvZKkg+6wGyd/LrGVEB+Xre0J
-Nil0GReM2AHDNZUYRv+HYJPIOrB0CRczLQsgFJ8K6aAD6F0CQQDzbpjYdx10qgK1
-cP59UHiHjPZYC0loEsk7s+hUmT3QHerAQJMZWC11Qrn2N+ybwwNblDKv+s5qgMQ5
-5tNoQ9IfAkEAxkyffU6ythpg/H0Ixe1I2rd0GbF05biIzO/i77Det3n4YsJVlDck
-ZkcvY3SK2iRIL4c9yY6hlIhs+K9wXTtGWwJBAO9Dskl48mO7woPR9uD22jDpNSwe
-k90OMepTjzSvlhjbfuPN1IdhqvSJTDychRwn1kIJ7LQZgQ8fVz9OCFZ/6qMCQGOb
-qaGwHmUK6xzpUbbacnYrIM6nLSkXgOAwv7XXCojvY614ILTK3iXiLBOxPu5Eu13k
-eUz9sHyD6vkgZzjtxXECQAkp4Xerf5TGfQXGXhxIX52yH+N2LtujCdkQZjXAsGdm
-B2zNzvrlgRmgBrklMTrMYgm1NPcW+bRLGcwgW2PTvNM=
------END RSA PRIVATE KEY-----
+-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDUvJm34Gg0Qb0v
+XU63j887byDSpYsx0lsL+XoXEWW6wfqBDlsg7XkBwHj+WJr+d4f4dQmoOvMjITdg
+RZrDyfC9oinz33bCIKkTkXSpNStKf18kLuIFcv7k6LOyeafasObNXPk3K0brXC9v
+UtD/ApQ1kxh7vyBaCDdZKlnnlVDCiKaraghO9No+BdAj48UzDbRrxJWNoECuxB5Z
+XijzBQTwhc0cRYJxb8JX61ICH0JOLTzL9VgTEq5EwAeQ058AV0TnmT5RLpO4Ckea
+yhKhPqSc7eTHmrR42Ia6ErnS7XurorhHloHxSx/qqQzWIwsQ0uB00c6dRS3JSWyR
+PJaHh7XZAgMBAAECggEAFn1gbChPe9lzTEg7Tnvn4ZWholiZOt7NJ0VBhfdzNLzV
+ucJbGe5g+4bDLnMO4lX1TEE7OyC4RtTNIOKwNis+xcgYp/fOJemuq4CWFQlSQUxD
+3PRj3/BEnXiIVBbjtY08E9EqEONaBP8NjgxIR0fuLoJqyoeYaPbeEGbCHbxoTu2n
+/TV/drHKgATVsOxVDF5tOgTpXJ2JEeZl4NylNTJXRtnmCUHWR9rJ3Qs1KEORmkP5
+8GycnOHKocya5UssQ1FPF5lqSPU/xvFsh55gcxHLVZT5V2B4cNkgKuDi5l5jUst3
+RxIrDSFgKnJNcd2wHM02EQNiF6IeX9Is61SbqX3RjQKBgQDynLmPgxp65HTbc8fw
+HhrUBsHh4vM3eGfanfs/ysQ++6GK+LmxpK6hwSg1Ryx4fWAqdxfg/8XqKgaoCdj7
+j6zly5mm9LYq76gse1uZWfcnvsKs8P62l6Av7Rtnyxc6j7XcXf74qwcY1pANGrwf
+X2IiyMF3ki3YDH0uv54+LbwdkwKBgQDgedZ+LxDg4MPlQ6LC8DDbLjWBhM5moTny
+TCkhkq9Vf8qekak4VP9vWOfbgkcTWgkbevCdtODdvOy1JL1RetSHQKI/iuV7fAmk
+pehIOssmO0Inh9CaQGTZwBS6cOxypuN7wwMkQVXszS+nNONILCnAx6k1nZOiLSdn
+8ou/U3JiYwKBgEqzbQM+N+INA9oqTS6m5lXQetQlgAPdZATRTfI3abOG4RecO/jx
+nv+ZLNsyvgOffwO0Rbr2pibSp9gHqDLU60SaKwZYJNsVja+cj/io1cv8FY8QaS0p
+hJ4dIKoVw2I5q6JdostIRdglAJe4WqJCSUIylDdP4CO8vLKvN3cnt9tXAoGBAKXm
+5jPULTFGbQGgf0Z7pmAXQsw6jyEiv2ToDO4XLyaNj/6pwNs1VqPAnXuKSWVwAZMh
+xXuJFzhKTNeEE7eIhFKB3mgAC6K8BZR+WbIoYcQbv8Tfh7i5JtAYOjmhA9+ooC/z
+7Pp6nzqoWzPEzsWkfidQaSqLD3Wo0Zrtk4MP9VXpAoGAOeri0djkoxPn+irxi4be
+gXwOmHxtUwDDvXRAxUDdU0ZbVdp2/2rPVfWeDQKejMg49URbMFUcQ6QJjflChET2
+VDioUBCFZXYJ3sjt/sU4Fc21I27vUr4uhZYR/niBuIObaBh4xV1JxN9UYL0QTUAU
+JPuWxpaBqZzzDLnf4WTwWsE=
+-----END PRIVATE KEY-----
 EOD;
 
     protected function setUp(): void
